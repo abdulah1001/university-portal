@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "A comprehensive university portal for students and faculty",
   manifest: "/manifest.json",
   themeColor: "#000000",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -25,6 +25,11 @@ export const metadata: Metadata = {
       { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
     ],
   },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "application-name": "University Portal",
+  },
 }
 
 export default function RootLayout({
@@ -37,14 +42,23 @@ export default function RootLayout({
       <head>
         <meta name="application-name" content="University Portal" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="University Portal" />
         <meta name="description" content="A comprehensive university portal for students and faculty" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-startup-image" href="/splash.png" />
+        <style>{`
+          @media all and (display-mode: standalone) {
+            body {
+              -webkit-tap-highlight-color: transparent;
+            }
+          }
+        `}</style>
       </head>
       <body className={inter.className}>
         {children}
