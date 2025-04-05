@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "@/app/globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ToastProvider } from "@/components/toast-provider"
+import "./globals.css"
 import { register } from "./pwa-register"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -21,6 +19,12 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
+  icons: {
+    apple: [
+      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -29,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <meta name="application-name" content="University Portal" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -39,12 +43,11 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          {children}
-          <ToastProvider />
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   )

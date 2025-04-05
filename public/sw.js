@@ -4,8 +4,11 @@ const urlsToCache = [
   '/manifest.json',
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
-  '/images/placeholder-logo.png',
-  '/images/placeholder-user.jpg'
+  '/images/university-logo.png',
+  '/images/placeholder-user.jpg',
+  '/app/globals.css',
+  '/app/layout.tsx',
+  '/app/page.tsx'
 ];
 
 self.addEventListener('install', (event) => {
